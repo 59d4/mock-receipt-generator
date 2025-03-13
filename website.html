@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Receipt Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f8f8;
+            padding: 20px;
+        }
+        .receipt {
+            width: 300px;
+            background: white;
+            padding: 15px;
+            border: 2px dashed gray;
+            margin: 20px auto;
+            text-align: left;
+            font-family: monospace;
+        }
+        .warning {
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mock Receipt Generator</h1>
+    <p>Enter details to see how fake receipts are made.</p>
+    <input type="text" id="storeName" placeholder="Store Name">
+    <input type="text" id="item" placeholder="Item Description">
+    <input type="number" id="price" placeholder="Price ($)">
+    <button onclick="generateReceipt()">Generate Receipt</button>
+    
+    <div id="output" class="receipt" style="display:none;">
+        <p><strong>Store:</strong> <span id="outStore"></span></p>
+        <p><strong>Item:</strong> <span id="outItem"></span></p>
+        <p><strong>Price:</strong> $<span id="outPrice"></span></p>
+        <p><strong>Note:</strong> This is NOT a real receipt.</p>
+    </div>
+    
+    <p class="warning">Warning: Scammers use tools like this for fraud. Stores check barcodes, transaction logs, and receipt paper authenticity.</p>
+    
+    <script>
+        function generateReceipt() {
+            let store = document.getElementById("storeName").value;
+            let item = document.getElementById("item").value;
+            let price = document.getElementById("price").value;
+            
+            if (!store || !item || !price) {
+                alert("Please fill in all fields.");
+                return;
+            }
+            
+            document.getElementById("outStore").innerText = store;
+            document.getElementById("outItem").innerText = item;
+            document.getElementById("outPrice").innerText = price;
+            document.getElementById("output").style.display = "block";
+        }
+    </script>
+</body>
+</html>
